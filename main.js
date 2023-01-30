@@ -1,23 +1,80 @@
 const express = require("express");
 const cors = require("cors");
-const app = express();
+const bodyParser = require("body-parser");
 
-const port = 3007;
+const app = express();
+const PORT = 3008;
 
 app.use(cors());
+app.use(bodyParser.json());
+
+const genRandomHex = (size) =>
+  [...Array(size)]
+    .map(() => Math.floor(Math.random() * 16).toString(16))
+    .join("");
 
 app.get("/", function (req, res) {
   res.send("Express Server Home directory");
 });
+
 app.get("/products", function (req, res) {
+  console.log("GET Products request irlee");
   res.status(200).json(products);
 });
+
+app.get("/product/:id", (req, res) => {
+  const tempProdID = req.params.id;
+  const leaveProduct = products.find((product) => product.pid === tempProdID);
+  console.log("GET by ID found ==> ", leaveProduct);
+
+  if (leaveProduct) {
+    res.json(leaveProduct);
+  } else {
+    res.status(404).send({ message: "Product not found" });
+  }
+});
+
 app.get("/users", function (req, res) {
   res.status(200).json(users);
 });
 
-app.listen(port, () => {
-  console.log(`Express server listeing port on ${port}`);
+app.get("/user/:id", (req, res) => {
+  const tempUserId = req.params.id;
+
+  if (users[tempUserId]) {
+    res.json(users[tempUserId]);
+  } else {
+    res.status(404).send({ message: "User not found" });
+  }
+});
+
+app.post("/add", (req, res) => {
+  console.log("POST request irlee", req.body);
+
+  const newProduct = {
+    pid: genRandomHex(8),
+    ...req.body,
+  };
+  products.push(newProduct);
+  console.log("New Products after added: ", products);
+});
+
+app.delete("/product/:id", (req, res) => {
+  const tempId = req.params.id;
+  console.log("DELETE request irlee", tempId);
+
+  try {
+    products = products.filter((product) => product.pid !== tempId);
+
+    console.log("After delete: ", products);
+    res.send("Successfull delete");
+  } catch (error) {
+    console.error("Delete hiih uildel aldaa garlaa", error);
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Express server listeing port on ${PORT}`);
 });
 
 const users = [
