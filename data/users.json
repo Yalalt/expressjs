@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "name": "Mike",
+      "password": "Asd"
+    },
+    {
+      "name": "Bold",
+      "password": "Asd"
+    },
+    {
+      "name": "John",
+      "password": "Asd"
+    },
+    {
+      "name": "Yalalt",
+      "password": "password123"
+    },
+    {
+      "name": "Erdene",
+      "password": "dididi"
+    },
+    {
+      "name": "Amar",
+      "password": "aaa123"
+    }
+  ]
+}
