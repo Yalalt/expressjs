@@ -133,6 +133,11 @@ app.delete("/product/:id", (req, res) => {
   }
 });
 
+// 404 page
+app.use((req, res) => {
+  res.status(404).sendFile('./views/404.html', { root: __dirname });
+});
+
 app.listen(PORT, () => {
   console.log(`Express server listeing port on ${PORT}`);
 });
