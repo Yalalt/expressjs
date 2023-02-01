@@ -1,29 +1,27 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 
 const app = express();
 const PORT = 3008;
 
-
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-
-
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.send("Express Server Home directory");
 });
 
-app.get("/products", function (req, res) {
+app.get("/products", (req, res) => {
   console.log("GET Products request irlee");
 
-  fs.readFile('./data/products.json', (error, data) => {
-    if(error) {
+  fs.readFile("./data/products.json", (error, data) => {
+    if (error) {
       res.status(500).send({ message: error });
     } else {
+      console.log("Products husel irsen ...");
       const tempProducts = JSON.parse(data);
+
       console.log("content==> ", tempProducts[2]);
       res.status(200).json(tempProducts);
     }
@@ -43,11 +41,12 @@ app.get("/product/:id", (req, res) => {
 });
 
 app.get("/users", function (req, res) {
-  
-  fs.readFile('./data/users.json', (error, content) => {
-    if(error) {
+  fs.readFile("./data/users.json", (error, content) => {
+    if (error) {
       res.status(500).send({ message: error });
     } else {
+      console.log("Hereglegchiin huselt orj irlee...");
+
       const tempUsers = JSON.parse(content);
       res.status(200).json(tempUsers);
     }
@@ -62,6 +61,13 @@ app.get("/user/:id", (req, res) => {
   } else {
     res.status(404).send({ message: "User not found" });
   }
+});
+
+app.post("/user/add", (req, res) => {
+  console.log("User add huselt irlee... ");
+  console.log(req.body);
+
+  fs.readFile("./data/users.json");
 });
 
 app.post("/product/add", (req, res) => {
@@ -135,7 +141,7 @@ app.delete("/product/:id", (req, res) => {
 
 // 404 page
 app.use((req, res) => {
-  res.status(404).sendFile('./views/404.html', { root: __dirname });
+  res.status(404).sendFile("./views/404.html", { root: __dirname });
 });
 
 app.listen(PORT, () => {

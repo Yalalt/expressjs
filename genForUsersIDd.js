@@ -4,5 +4,5 @@ const genRandomHexUsersID = (size) =>
     .join("");
 
 for (let i = 0; i < 8; i++) {
-  console.log(i + 1 + "\t\t" + "m" + genRandomHexUsersID(8));
+  console.log(i + 1 + "\t\t" + "u" + genRandomHexUsersID(8));
 }

@@ -7,7 +7,8 @@
     "phone2",
     "address",
     "email",
-    "password"
+    "password",
+    "role"
   ],
   "orders": [
     "oid", // ID

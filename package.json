@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node main.js",
-    "dev": "nodemon main.js --watch"
+    "dev": "nodemon main"
   },
   "repository": {
     "type": "git",
