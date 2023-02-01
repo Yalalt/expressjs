@@ -1,0 +1,48 @@
+{
+  "users": [
+    "uid",
+    "fname",
+    "lname",
+    "phone1",
+    "phone2",
+    "address",
+    "email",
+    "password"
+  ],
+  "orders": [
+    "oid", // ID
+    "onumber", //#12345
+    "o_date",
+    "uid", // user id-gaar name, phone, address awna
+    "pid", // products id-gaar productsiin medeelliig awna
+    "orders_amount",
+    "total_price",
+    "payment_type [card, cash, account]", // cardaar, beleneer, dansaar
+    "status [active, canceled, delivered]", // active, canceled, hurgegdsen
+    "ebarimt [people, organization]", // irgen, baiguullagaar
+    "mid" // moderator id
+  ],
+  "products": [
+    "pid", // id
+    "name",
+    "price",
+    "stock",
+    "sale",
+    "image",
+    "category",
+    "spec",
+    "description",
+    "warranty", // batalgaat date
+    "prodCuDate", // product create date and update date
+    "hidden" // Client web on hidden
+  ],
+  "moderators": [
+    "mid",
+    "fname",
+    "lname",
+    "email",
+    "phone",
+    "password",
+    "order_number" // orders deerees ooriin mid tai moriig toolood oruulna
+  ]
+}

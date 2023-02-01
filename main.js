@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const app = express();
 const PORT = 3008;
-const PUB_PATH = "./data";
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,11 +19,12 @@ app.get("/", function (req, res) {
 app.get("/products", function (req, res) {
   console.log("GET Products request irlee");
 
-  fs.readFile(`${PUB_PATH}/products.json`, (error, content) => {
+  fs.readFile('./data/products.json', (error, data) => {
     if(error) {
       res.status(500).send({ message: error });
     } else {
-      const tempProducts = JSON.parse(content);
+      const tempProducts = JSON.parse(data);
+      console.log("content==> ", tempProducts[2]);
       res.status(200).json(tempProducts);
     }
   });
@@ -43,7 +44,7 @@ app.get("/product/:id", (req, res) => {
 
 app.get("/users", function (req, res) {
   
-  fs.readFile(`${PUB_PATH}/users.json`, (error, content) => {
+  fs.readFile('./data/users.json', (error, content) => {
     if(error) {
       res.status(500).send({ message: error });
     } else {
