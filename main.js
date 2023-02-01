@@ -67,7 +67,16 @@ app.post("/user/add", (req, res) => {
   console.log("User add huselt irlee... ");
   console.log(req.body);
 
-  fs.readFile("./data/users.json");
+  fs.readFile("./data/users.json", (err, data) => {
+    const tempUsers = JSON.parse(data);
+
+    if(err) {
+      res.json({ status: "505", message: "File reading error uuslee..."});
+    } else {
+      console.log("Request body===> ", req.body);
+      const newUser = req.body;
+    }
+  })
 });
 
 app.post("/product/add", (req, res) => {
