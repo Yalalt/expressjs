@@ -63,23 +63,85 @@ app.get("/user/:id", (req, res) => {
   }
 });
 
-app.post("/user/add", (req, res) => {
+app.post("/user/", (req, res) => {
   console.log("User add huselt irlee... ");
   console.log(req.body);
 
   fs.readFile("./data/users.json", (err, data) => {
     const tempUsers = JSON.parse(data);
 
-    if(err) {
-      res.json({ status: "505", message: "File reading error uuslee..."});
+    if (err) {
+      res.json({ status: "505", message: "File reading error uuslee..." });
     } else {
       console.log("Request body===> ", req.body);
       const newUser = req.body;
     }
-  })
+  });
 });
 
-app.post("/product/add", (req, res) => {
+app.put("/user/:id", (req, res) => {
+  console.log("PUT User huselt irlee...");
+  console.log("Param id is==> " + req.params.id);
+
+  fs.readFile("./data/users.json", (error, data) => {
+    const allUsers = JSON.parse(data);
+
+    if (error) {
+      res.json({
+        status: "505",
+        message: "File unshih ved aldaa garlaa",
+      });
+
+      console.log("File read error occur...");
+    } else {
+      console.log("Dotood users => ", allUsers);
+      const reqUserData = req.body;
+      console.log("Irsen medeelel===>", reqUserData);
+
+      allUsers.map((user) => {
+        if(user.uid === reqUserData.uid) {
+          user.fname = reqUserData.fname;
+          user.lname = reqUserData.lname;
+          user.phone1 = reqUserData.phone1;
+          user.phone2 = reqUserData.phone2;
+          user.address = reqUserData.address;
+          user.email = reqUserData.email;
+          user.password = reqUserData.password;
+          user.role = reqUserData.role;
+        }
+      });
+
+      console.log("File ruu bichij bgaa OBJECT====> ", allUsers);
+
+      fs.writeFile(
+        "./data/users.json",
+        JSON.stringify(allUsers),
+        (error) => {
+          if (error) {
+            res.json({
+              status: "505",
+              message: "Error when write to file...",
+              userData: "none"
+            });
+          } else {
+            res.json({
+              status: "200",
+              message: "Successful file write",
+              userData: "none"
+            });
+          }
+        }
+      );
+      res.json({
+        status: "200",
+        message: "Amjilttai unshlaa",
+        userData: reqUserData
+      });
+    }
+  });
+});
+
+app.post("/product/", (req, res) => {
   console.log("POST request irlee", req.body);
   const body = req.body;
 
