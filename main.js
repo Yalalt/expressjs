@@ -12,55 +12,49 @@ app.get("/", (req, res) => {
   res.send("Express Server Home directory");
 });
 
-app.get("/products", (req, res) => {
-  console.log("GET Products request irlee");
-
-  fs.readFile("./data/products.json", (error, data) => {
-    if (error) {
-      res.status(500).send({ message: error });
-    } else {
-      console.log("Products husel irsen ...");
-      const tempProducts = JSON.parse(data);
-
-      console.log("content==> ", tempProducts[2]);
-      res.status(200).json(tempProducts);
-    }
-  });
-});
-
-app.get("/product/:id", (req, res) => {
-  const tempProdID = req.params.id;
-  const leaveProduct = products.find((product) => product.pid === tempProdID);
-  console.log("GET by ID found ==> ", leaveProduct);
-
-  if (leaveProduct) {
-    res.json(leaveProduct);
-  } else {
-    res.status(404).send({ message: "Product not found" });
-  }
-});
-
 app.get("/users", function (req, res) {
   fs.readFile("./data/users.json", (error, content) => {
     if (error) {
-      res.status(500).send({ message: error });
+      if(content === null) {
+        res.status(500).json({status: "Users Empty error!!!!", message: error.message });
+      } else {
+        res.status(500).send({ message: error });
+      }
     } else {
       console.log("Hereglegchiin huselt orj irlee...");
-
-      const tempUsers = JSON.parse(content);
-      res.status(200).json(tempUsers);
+      if(content !== null) {
+        const tempUsers = JSON.parse(content);
+        res.status(200).json(tempUsers);
+      }
     }
   });
 });
 
 app.get("/user/:id", (req, res) => {
-  const tempUserId = req.params.id;
+  const tempReqUserId = req.params.id;
 
-  if (users[tempUserId]) {
-    res.json(users[tempUserId]);
-  } else {
-    res.status(404).send({ message: "User not found" });
-  }
+  fs.readFile("./data/users.json", (err, data) => {
+    const tempLocalUsers = JSON.parse(data);
+
+    if (err) {
+      res.json({ status: "505", message: "File reading error uuslee..." });
+    } else {
+      console.log("Request body===> ", req.params.id);
+
+      const foundUser = tempLocalUsers.find(
+        (user) => user.uid === tempReqUserId
+      );
+      if (foundUser) {
+        console.log("Oldloo====> ", foundUser);
+        res.status(200).json({
+          message: "Amjilttai file-aas unshij user oldloo.",
+          userData: foundUser,
+        });
+      } else {
+        res.status(404).send({ message: "User not found" });
+      }
+    }
+  });
 });
 
 app.post("/user/", (req, res) => {
@@ -69,12 +63,75 @@ app.post("/user/", (req, res) => {
 
   fs.readFile("./data/users.json", (err, data) => {
     const tempUsers = JSON.parse(data);
-
     if (err) {
       res.json({ status: "505", message: "File reading error uuslee..." });
     } else {
       console.log("Request body===> ", req.body);
       const newUser = req.body;
+      tempUsers.push(newUser);
+
+      fs.writeFile("./data/users.json", JSON.stringify(tempUsers), (error) => {
+        if (error) {
+          res.json({
+            status: "505",
+            message: "Error when write to file add user",
+          });
+        } else {
+          res.status(200).json({
+            status: "200",
+            message: "Amjilttai user add hiilee",
+            userData: tempUsers
+          });
+        }
+      });
+    }
+  });
+});
+
+app.delete("/user/:id", (req, res) => {
+  console.log("DELETE User huselt irlee...");
+  console.log("Param id is==> " + req.params.id);
+  const reqUserID = req.params.id;
+
+  fs.readFile("./data/users.json", (error, data) => {
+    const allUsers = JSON.parse(data);
+
+    if (error) {
+      res.json({
+        status: "505",
+        message: "File unshih ved aldaa garlaa",
+      });
+      console.log("File read error occur...");
+
+    } else {
+      console.log("Dotood users => ", allUsers);
+      let foundUserIndex = "";
+      allUsers.map((user, index) => {
+        if(user.uid === reqUserID) {
+          foundUserIndex = index;
+        }
+      });
+
+      allUsers.splice(foundUserIndex, 1);
+
+      fs.writeFile("./data/users.json", JSON.stringify(allUsers), (error) => {
+        if (error) {
+          res.json({
+            status: "505",
+            message: "Error when write to file...",
+          });
+        } else {
+          res.json({
+            status: "200",
+            message: "Successful file write",
+          });
+        }
+      });
+      res.json({
+        status: "200",
+        message: "Amjilttai file-d save hiilee",
+        userData: allUsers
+      });
     }
   });
 });
@@ -82,6 +139,7 @@ app.post("/user/", (req, res) => {
 app.put("/user/:id", (req, res) => {
   console.log("PUT User huselt irlee...");
   console.log("Param id is==> " + req.params.id);
+  const reqUserID = req.params.id;
 
   fs.readFile("./data/users.json", (error, data) => {
     const allUsers = JSON.parse(data);
@@ -99,7 +157,7 @@ app.put("/user/:id", (req, res) => {
       console.log("Irsen medeelel===>", reqUserData);
 
       allUsers.map((user) => {
-        if(user.uid === reqUserData.uid) {
+        if (user.uid === reqUserID) {
           user.fname = reqUserData.fname;
           user.lname = reqUserData.lname;
           user.phone1 = reqUserData.phone1;
@@ -108,35 +166,82 @@ app.put("/user/:id", (req, res) => {
           user.email = reqUserData.email;
           user.password = reqUserData.password;
           user.role = reqUserData.role;
+
+          console.log("Utga olgolt ajillaa !!!!!");
         }
       });
 
       console.log("File ruu bichij bgaa OBJECT====> ", allUsers);
 
-      fs.writeFile(
-        "./data/users.json",
-        JSON.stringify(allUsers),
-        (error) => {
-          if (error) {
-            res.json({
-              status: "505",
-              message: "Error when write to file...",
-              userData: "none"
-            });
-          } else {
-            res.json({
-              status: "200",
-              message: "Successful file write",
-              userData: "none"
-            });
-          }
+      fs.writeFile("./data/users.json", JSON.stringify(allUsers), (error) => {
+        if (error) {
+          res.json({
+            status: "505",
+            message: "Error when write to file...",
+            userData: "none",
+          });
+        } else {
+          res.json({
+            status: "200",
+            message: "Successful file write",
+            userData: "none",
+          });
         }
-      );
+      });
       res.json({
         status: "200",
-        message: "Amjilttai unshlaa",
-        userData: reqUserData
+        message: "Amjilttai file-d save hiilee",
+        userData: reqUserData,
       });
+    }
+  });
+});
+
+
+
+app.get("/products", (req, res) => {
+  console.log("GET Products request irlee");
+
+  fs.readFile("./data/products.json", (error, data) => {
+    if (error) {
+      res.status(500).send({ message: error });
+    } else {
+      console.log("Products husel irsen ...");
+      const tempProducts = JSON.parse(data);
+
+      console.log("content==> ", tempProducts[2]);
+      res.status(200).json(tempProducts);
+    }
+  });
+});
+
+app.get("/product/:id", (req, res) => {
+  const tempRequestProdID = req.params.id;
+
+  fs.readFile("./data/products.json", (err, data) => {
+    if (err) {
+      res.json({ status: "505", message: "Products read by id aldaa garlaa" });
+      console.log("File unshihad aldaa garlaa: Products by ID heseg:");
+    } else {
+      console.log("Products read successfull");
+
+      const tempProducts = JSON.parse(data);
+
+      const foundProduct = tempProducts.find(
+        (product) => product.pid === tempRequestProdID
+      );
+      console.log("GET by ID found ==> ", foundProduct);
+
+      if (foundProduct) {
+        // id -tai neg product hariug ywuulah
+        res.json({
+          status: "200",
+          message: "Amjilttai file-aas unshij oldloo.",
+          userData: foundProduct,
+        });
+      } else {
+        res.status(404).send({ message: "Product not found" });
+      }
     }
   });
 });
@@ -146,7 +251,7 @@ app.post("/product/", (req, res) => {
   const body = req.body;
 
   fs.readFile("./data/products.json", (err, content) => {
-    const saveProducts = JSON.parse(content);
+    const localTempProducts = JSON.parse(content);
     if (err) {
       res.json({
         status: "Read file error",
@@ -166,11 +271,11 @@ app.post("/product/", (req, res) => {
         spec: [...body.spec],
       };
 
-      saveProducts.push(newProduct);
+      localTempProducts.push(newProduct);
 
       fs.writeFile(
         "./data/newProducts.json",
-        JSON.stringify(saveProducts),
+        JSON.stringify(localTempProducts),
         (error) => {
           if (error) {
             res.json({
