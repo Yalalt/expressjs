@@ -215,6 +215,21 @@ app.get("/products", (req, res) => {
   });
 });
 
+app.get("/products/sum", (req, res) => {
+  console.log("GET Products LENGTH request irlee");
+
+  fs.readFile("./data/products.json", (error, data) => {
+    if (error) {
+      res.status(500).send({ message: error });
+    } else {
+      console.log("Products husel irsen ...");
+      const tempProducts = JSON.parse(data);
+      const productsCountNumbers = tempProducts.length + 1;
+      res.status(200).json({message: "Successful read and ssend number products", productsCount: productsCountNumbers});
+    }
+  });
+});
+
 app.get("/product/:id", (req, res) => {
   const tempRequestProdID = req.params.id;
 
@@ -248,15 +263,18 @@ app.get("/product/:id", (req, res) => {
 
 app.post("/product/", (req, res) => {
   console.log("POST request irlee", req.body);
-  const body = req.body;
+  const requestBodyObj = req.body;
+  console.log("Irsen Body Req===> ", requestBodyObj);
 
   fs.readFile("./data/products.json", (err, content) => {
-    const localTempProducts = JSON.parse(content);
     if (err) {
-      res.json({
+      res.status(500).json({
         status: "Read file error",
+        message: err
       });
     } else {
+      const localTempProducts = JSON.parse(content);
+
       const newProduct = {
         pid: body.pid,
         description: body.description,
@@ -270,27 +288,27 @@ app.post("/product/", (req, res) => {
         hidden: body.hidden,
         spec: [...body.spec],
       };
-
-      localTempProducts.push(newProduct);
-
-      fs.writeFile(
-        "./data/newProducts.json",
-        JSON.stringify(localTempProducts),
-        (error) => {
-          if (error) {
-            res.json({
-              status: "Error when write to file...",
-            });
-          } else {
-            res.json({
-              status: "Successful file write",
-            });
-          }
-        }
-      );
-      res.json({ status: "Successful file read" });
-      console.log("Content: ", content);
     }
+      // localTempProducts.push(newProduct);
+
+    //   fs.writeFile(
+    //     "./data/newProducts.json",
+    //     JSON.stringify(localTempProducts),
+    //     (error) => {
+    //       if (error) {
+    //         res.json({
+    //           status: "Error when write to file...",
+    //         });
+    //       } else {
+    //         res.json({
+    //           status: "Successful file write",
+    //         });
+    //       }
+    //     }
+    //   );
+    //   res.json({ status: "Successful file read" });
+    //   console.log("Content: ", content);
+    // }
   });
 
   const newProduct = {
