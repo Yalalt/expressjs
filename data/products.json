@@ -40,9 +40,7 @@
   {
     "name": "HP Probook 430",
     "spec": [
-      {
-        "Brand": "HP"
-      },
+      { "Brand": "HP" },
       { "Display": "13 inch" },
       { "CPU": "i5-8250U 2,4 GHZ" },
       { "Hard": "256GB SSD" },
@@ -62,9 +60,7 @@
   {
     "name": "Acer Spin 3",
     "spec": [
-      {
-        "Brand": "Acer"
-      },
+      { "Brand": "Acer" },
       { "Display": "14 inch" },
       { "CPU": "i5-8250U 2,4 GHZ" },
       { "Hard": "512GB SSD" },
@@ -86,9 +82,7 @@
     "pid": "a4bbe60a",
     "description": "The iPad is a touchscreen tablet PC made by Apple . The original iPad debuted in 2010. Apple has three iPad product lines: iPad, iPad mini and iPad Pro. All models are available in silver, gray and gold. They run Apple's iOS mobile operating system and have Wi-Fi connectivity with optional 4G capabilities.",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Display": "17 inch" },
       { "Resolution": "2360 x 1640" },
       { "Storage": "16GB" }
@@ -149,9 +143,7 @@
   {
     "description": "As we said a moment ago, our favorite laptop features a 13.3″ inch touchscreen. Xiaomi has gone all out, as it is not only of high definition screen of 360° rotation, but it is also Super Retina OLED with a resolution of 2880 x 1800. It has a brightness of up to 600 nits and a contrast ratio of 1000000:1, with a refresh rate of 90Hz, Adjustable to 60Hz if desired via the Fn + S keyboard combination. The above resolution translates to 255 PPI with a display ratio of 16:10.",
     "spec": [
-      {
-        "Brand": "Xiaomi"
-      },
+      { "Brand": "Xiaomi" },
       { "Memory_Capacity": "Main memory allocated memory" },
       { "Display": "13.3" },
       { "Display_Ratio": "16:10" },
@@ -176,9 +168,7 @@
   {
     "description": "Philips Hue smart LED bulbs",
     "spec": [
-      {
-        "Brand": "Philips"
-      },
+      { "Brand": "Philips" },
       { "Type": "A19" },
       { "Wattage": "9.5W" },
       { "Output": "800 Lumens" }
@@ -197,9 +187,7 @@
   {
     "description": "Philips HD6975/00 25 Litre Digital Oven Toaster Grill",
     "spec": [
-      {
-        "Brand": "Philips"
-      },
+      { "Brand": "Philips" },
       { "Capacity": "25 Liters" },
       { "Wattage": "1500W" },
       { "Weight": "6380 Grams" },
@@ -258,9 +246,7 @@
   {
     "description": "This 45W dual usb c charger is compatible with Macbook Air, iPad Pro, iPhone 14-8 Series, Samsung S22 Ultra-S10 Series, Steam Deck, Apple Watch Ultra, Apple Watch 8. Pixel 7 Pro and more.",
     "spec": [
-      {
-        "Brand": "UGREEN"
-      },
+      { "Brand": "UGREEN" },
       { "Connectivity_Technology": "USB C" },
       { "Connector_Type": "USB Type C, Dual USB C Ports" }
     ],
@@ -278,9 +264,7 @@
   {
     "description": "Beats Solo3 Wireless supports spatial audio for immersive music delivering a surround sound experience that you can take with you anywhere.",
     "spec": [
-      {
-        "Brand": "Beats"
-      },
+      { "Brand": "Beats" },
       { "Length": "6.9 in. / 17.7 cm" },
       { "Model": "Beats solo3" },
       { "Connectivity": "Bluetooth/Wireless" }
@@ -299,12 +283,8 @@
   {
     "description": "Introducing the newest member of the Nintendo Switch family Play at home on the TV or on-the-go with a vibrant 7-inch OLED screen with the Nintendo Switch  OLED Model system.",
     "spec": [
-      {
-        "Brand": "Nintendo"
-      },
-      {
-        "Storage": "Save games to your system with 64 GB of internal storage"
-      },
+      { "Brand": "Nintendo" },
+      { "Storage": "Save games to your system with 64 GB of internal storage" },
       {
         "Audio": "Enjoy enhanced sound from the systems onboard speakers when playing in Handheld and Tabletop modes."
       }
@@ -323,9 +303,7 @@
   {
     "description": "Fast-heating electric glass carafe kettle for quickly and conveniently boiling water",
     "spec": [
-      {
-        "Brand": "Amazon Basics"
-      },
+      { "Brand": "Amazon Basics" },
       { "Height": "8.27 inches" },
       { "Width": "4.92inches" }
     ],
@@ -343,9 +321,7 @@
   {
     "description": "Celestron PowerSeeker 127EQ Telescope - 20mm Erect-Image Eyepiece - 4mm Eyepiece - 3x Barlow Lens - Star Pointer Finder - Equatorial Head - 2x Slow-Motion Cables - Adjustable-Height Tripod - Counterweight Bar - 7.5 lbs.",
     "spec": [
-      {
-        "Brand": "Celestron"
-      },
+      { "Brand": "Celestron" },
       { "Height": "8.46 inches" },
       { "Width": "16.73 inches" }
     ],
@@ -363,9 +339,7 @@
   {
     "description": "2022 Apple MacBook Air Laptop with M2 chip: 13.6-inch Liquid Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, 1080p FaceTime HD Camera. Works with iPhone and iPad; Midnight",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "MacBook Air" },
       { "Screen_Size": "13.6 inch" },
       { "Color": "Midnight" },
@@ -388,9 +362,7 @@
   {
     "description": "Apple 2022 MacBook Air Laptop with M2 chip: 13.6-inch Liquid Retina Display, 8GB RAM, 512GB SSD Storage, Backlit Keyboard, 1080p FaceTime HD Camera. Works with iPhone and iPad; Starlight",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "MacBook Air" },
       { "Screen_Size": "13.6 inch" },
       { "Color": "Starlight" },
@@ -413,9 +385,7 @@
   {
     "description": "Apple 2021 MacBook Pro (14-inch, M1 Pro chip with 8 core CPU and 14 core GPU, 16GB RAM, 512GB SSD) Space Gray",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "MacBook Pro" },
       { "Screen_Size": "14.2 inch" },
       { "Color": "Space Gray" },
@@ -438,9 +408,7 @@
   {
     "description": "Apple 2021 MacBook Pro (16-inch, M1 Pro chip with 10 core CPU and 16 core GPU, 16GB RAM, 512GB SSD)  Space Gray",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "MacBook Pro" },
       { "Screen_Size": "16.2 inch" },
       { "Color": "Space Gray" },
@@ -463,9 +431,7 @@
   {
     "description": "Apple 2020 MacBook Air Laptop M1 Chip, 13 Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, FaceTime HD Camera, Touch ID. Works with iPhone iPad; Gold",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "MacBook Air" },
       { "Screen_Size": "13.6 inch" },
       { "Color": "Gold" },
@@ -488,9 +454,7 @@
   {
     "description": "Apple Magic Mouse Wireless, Rechargable Black Multi-Touch Surface",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "Magic Wireless mouse" },
       { "Color": "Black" },
       { "Connector_Type": "Wireless" },
@@ -510,9 +474,7 @@
   {
     "description": "Keep track of and find your items alongside friends and devices in the Find My app Simple one-tap setup instantly connects AirTag with your iPhone or iPad Play a sound on the built-in speaker to help find your things, or just ask Siri for help",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Batteries_Included": "Yes" },
       { "Color": "White" },
       { "Number_of_Batteries": "1 Lithium Metal batteries required" },
@@ -532,9 +494,7 @@
   {
     "description": "2022 Apple 10.9-inch iPad (Wi-Fi, 64GB) - Blue (10th Generation)",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "IPad" },
       { "Memory_Storage_Capacity": "64GB" },
       { "Color": "Blue" },
@@ -556,9 +516,7 @@
   {
     "description": "2022 Apple 12.9-inch iPad Pro (Wi-Fi, 128GB) - Space Gray (6th Generation)",
     "spec": [
-      {
-        "Brand": "Apple"
-      },
+      { "Brand": "Apple" },
       { "Model_Name": "IPad" },
       { "Memory_Storage_Capacity": "128GB" },
       { "Color": "Space Gray" },
@@ -580,9 +538,7 @@
   {
     "description": "SAMSUNG Galaxy Tab A8 10.5” 32GB Android Tablet w/ LCD Screen, Long Lasting Battery, Kids Content, Smart Switch, Expandable Memory, US Version, Dark Gray",
     "spec": [
-      {
-        "Brand": "Samsung"
-      },
+      { "Brand": "Samsung" },
       { "Series": "Galaxy Tab A8" },
       { "Memory_Storage_Capacity": "32GB" },
       { "Color": "Dark Gray" },
@@ -604,9 +560,7 @@
   {
     "description": "SAMSUNG Galaxy Tab S8+ Android Tablet, 12.4” Large AMOLED Screen, 512GB Storage, Wi-Fi 6E, Ultra Wide Camera, S Pen Included, Long Lasting Battery, Graphite",
     "spec": [
-      {
-        "Brand": "Samsung"
-      },
+      { "Brand": "Samsung" },
       { "Series": "Galaxy Tab S8 plus" },
       { "Memory_Storage_Capacity": "512GB" },
       { "Color": "Graphite" },
@@ -628,9 +582,7 @@
   {
     "description": "Microsoft Surface Pro 9 (2022), 13 2-in-1 Tablet & Laptop, Thin & Lightweight, Intel 12th Gen i7 Fast Processor for Multi-Tasking, 16GB RAM, 256GB Storage with Windows 11, Graphite",
     "spec": [
-      {
-        "Brand": "Microsoft"
-      },
+      { "Brand": "Microsoft" },
       { "Series": "Surface Pro" },
       { "CPU": "Intel Evo i7-2640M" },
       { "RAM": "16GB" },
@@ -654,9 +606,7 @@
   {
     "description": "Microsoft Surface Pro 9 (2022), 13 2-in-1 Tablet & Laptop, Thin & Lightweight, Intel 12th Gen i7 Fast Processor for Multi-Tasking, 16GB RAM, 256GB Storage with Windows 11, Forest",
     "spec": [
-      {
-        "Brand": "Microsoft"
-      },
+      { "Brand": "Microsoft" },
       { "Series": "Surface Pro" },
       { "CPU": "Intel Evo i7-2640M" },
       { "RAM": "16GB" },
@@ -680,9 +630,7 @@
   {
     "description": "Hard Travel Case for JBL Charge 4 Waterproof Bluetooth Speaker with Silicone Case for JBL Pulse 4 - Waterproof Portable Bluetooth Speaker with Shoulder Strap - 2 Pack",
     "spec": [
-      {
-        "Brand": "Comecase"
-      },
+      { "Brand": "Comecase" },
       { "Form_Factor": "Case" },
       { "Shell_Type": "Hybrid" },
       { "Material": "Nylon, Silicone, Ethylene Vinyl Acetate" },
@@ -702,9 +650,7 @@
   {
     "description": "Effortlessly create your favorite meals and snacks like smoothies, omelets, sauces and dips. 250 watts high-torque power base",
     "spec": [
-      {
-        "Brand": "Magic Bullet"
-      },
+      { "Brand": "Magic Bullet" },
       { "Color": "Silver/Black" },
       { "Capacity": "0.57 Liters" },
       { "Product_Dimensions": "6.93D x 13.19W x 10.63H inches" },
@@ -726,9 +672,7 @@
   {
     "description": "Fitbit Luxe Fitness and Wellness Tracker with Stress Management, Sleep Tracking and 24/7 Heart Rate, Orchid/Platinum Stainless Steel, One Size, S & L Bands Included",
     "spec": [
-      {
-        "Brand": "Fitbit"
-      },
+      { "Brand": "Fitbit" },
       { "Material": "Stainless Steel" },
       { "Color": "Orchid/Platinum Stainless Steel" },
       { "Compatible_Devices": "Smartphones" },
@@ -746,5 +690,22 @@
     "warranty": "1 year",
     "prodCuDate": "2022-01-23",
     "hidden": false
+  },
+  {
+    "pid": "a03ae298",
+    "name": "Macbook 16 inch M2",
+    "price": "1399",
+    "stock": "13",
+    "sale": "15",
+    "image": "https://m.media-amazon.com/images/I/61vFO3R5UNL._AC_SX679_.jpg",
+    "description": "MacBook Pro 16 inch model A13323 Apple Store from NYC",
+    "category": "computers",
+    "warranty": "1",
+    "hidden": "true",
+    "prodCuDate": "1675651815456",
+    "spec": [
+      { "CPU GPU RAM": "10 Core 16 GPU RAM 16GB" },
+      { "Hard": "512GB SSD M.2" }
+    ]
   }
 ]

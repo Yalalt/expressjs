@@ -15,14 +15,16 @@ app.get("/", (req, res) => {
 app.get("/users", function (req, res) {
   fs.readFile("./data/users.json", (error, content) => {
     if (error) {
-      if(content === null) {
-        res.status(500).json({status: "Users Empty error!!!!", message: error.message });
+      if (content === null) {
+        res
+          .status(500)
+          .json({ status: "Users Empty error!!!!", message: error.message });
       } else {
         res.status(500).send({ message: error });
       }
     } else {
       console.log("Hereglegchiin huselt orj irlee...");
-      if(content !== null) {
+      if (content !== null) {
         const tempUsers = JSON.parse(content);
         res.status(200).json(tempUsers);
       }
@@ -80,7 +82,7 @@ app.post("/user/", (req, res) => {
           res.status(200).json({
             status: "200",
             message: "Amjilttai user add hiilee",
-            userData: tempUsers
+            userData: tempUsers,
           });
         }
       });
@@ -102,12 +104,11 @@ app.delete("/user/:id", (req, res) => {
         message: "File unshih ved aldaa garlaa",
       });
       console.log("File read error occur...");
-
     } else {
       console.log("Dotood users => ", allUsers);
       let foundUserIndex = "";
       allUsers.map((user, index) => {
-        if(user.uid === reqUserID) {
+        if (user.uid === reqUserID) {
           foundUserIndex = index;
         }
       });
@@ -130,7 +131,7 @@ app.delete("/user/:id", (req, res) => {
       res.json({
         status: "200",
         message: "Amjilttai file-d save hiilee",
-        userData: allUsers
+        userData: allUsers,
       });
     }
   });
@@ -197,8 +198,6 @@ app.put("/user/:id", (req, res) => {
   });
 });
 
-
-
 app.get("/products", (req, res) => {
   console.log("GET Products request irlee");
 
@@ -225,7 +224,12 @@ app.get("/products/sum", (req, res) => {
       console.log("Products husel irsen ...");
       const tempProducts = JSON.parse(data);
       const productsCountNumbers = tempProducts.length + 1;
-      res.status(200).json({message: "Successful read and ssend number products", productsCount: productsCountNumbers});
+      res
+        .status(200)
+        .json({
+          message: "Successful read and ssend number products",
+          productsCount: productsCountNumbers,
+        });
     }
   });
 });
@@ -264,59 +268,36 @@ app.get("/product/:id", (req, res) => {
 app.post("/product/", (req, res) => {
   console.log("POST request irlee", req.body);
   const requestBodyObj = req.body;
+  const newProduct = requestBodyObj;
   console.log("Irsen Body Req===> ", requestBodyObj);
 
   fs.readFile("./data/products.json", (err, content) => {
     if (err) {
       res.status(500).json({
         status: "Read file error",
-        message: err
+        message: err,
       });
     } else {
       const localTempProducts = JSON.parse(content);
+      console.log("Content: ", content);
+      
+      localTempProducts.push(newProduct);
 
-      const newProduct = {
-        pid: body.pid,
-        description: body.description,
-        name: body.name,
-        image: body.image,
-        price: body.price,
-        sale: body.sale,
-        category: body.category,
-        warranty: body.warranty,
-        prodCuDate: body.prodCuDate,
-        hidden: body.hidden,
-        spec: [...body.spec],
-      };
+      fs.writeFile(
+        "./data/products.json",
+        JSON.stringify(localTempProducts),
+        (error) => {
+          if (error) {
+            res.json({
+              status: "Error when write to file...",
+            });
+          } else {
+            res.status(200).json({ status: "Successful file read" });
+          }
+        }
+      );
     }
-      // localTempProducts.push(newProduct);
-
-    //   fs.writeFile(
-    //     "./data/newProducts.json",
-    //     JSON.stringify(localTempProducts),
-    //     (error) => {
-    //       if (error) {
-    //         res.json({
-    //           status: "Error when write to file...",
-    //         });
-    //       } else {
-    //         res.json({
-    //           status: "Successful file write",
-    //         });
-    //       }
-    //     }
-    //   );
-    //   res.json({ status: "Successful file read" });
-    //   console.log("Content: ", content);
-    // }
   });
-
-  const newProduct = {
-    pid: genRandomHex(8),
-    ...req.body,
-  };
-  products.push(newProduct);
-  console.log("New Products after added: ", products);
 });
 
 app.delete("/product/:id", (req, res) => {
