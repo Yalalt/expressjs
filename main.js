@@ -205,10 +205,12 @@ app.get("/products", (req, res) => {
     if (error) {
       res.status(500).send({ message: error });
     } else {
-      console.log("Products husel irsen ...");
+      console.log("Products husel irsen ***********");
       const tempProducts = JSON.parse(data);
-
-      console.log("content==> ", tempProducts[2]);
+      
+      // console.log("content==> ", tempProducts[2]);
+      console.log("--------------");
+      console.log("--------");
       res.status(200).json(tempProducts);
     }
   });
