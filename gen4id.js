@@ -6,3 +6,9 @@ const genRandomHexOrdersID = (size) =>
     for(let i  = 0; i < 20; i++){
   console.log(i+1 + "\t\t" +'o' + genRandomHexOrdersID(8));
 }
+
+
+
+// var datemilli = Date.parse('Sun May 11,2014');
+// let todayDate = new Date().toISOString().slice(0, 10);
+// console.log(todayDate);

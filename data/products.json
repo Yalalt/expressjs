@@ -692,20 +692,21 @@
     "hidden": false
   },
   {
-    "pid": "a03ae298",
-    "name": "Macbook 16 inch M2",
+    "pid": "752df1f8",
+    "name": "Macbook Pro M2 16/512",
     "price": "1399",
-    "stock": "13",
-    "sale": "15",
-    "image": "https://m.media-amazon.com/images/I/61vFO3R5UNL._AC_SX679_.jpg",
-    "description": "MacBook Pro 16 inch model A13323 Apple Store from NYC",
+    "stock": "12",
+    "sale": "10",
+    "image": "https://m.media-amazon.com/images/I/61lYIKPieDL._AC_SX679_.jpg",
+    "description": "SUPERCHARGED BY M2 PRO OR M2 MAX — Take on demanding projects with the M2 Pro or M2 Max chip. ",
     "category": "computers",
     "warranty": "1",
     "hidden": "true",
-    "prodCuDate": "1675651815456",
+    "prodCuDate": "2023-02-06",
     "spec": [
-      { "CPU GPU RAM": "10 Core 16 GPU RAM 16GB" },
-      { "Hard": "512GB SSD M.2" }
+      { "Brand": "Apple" },
+      { "Screen size": "14.2 inches" },
+      { "Color": "Space gray" }
     ]
   }
 ]
