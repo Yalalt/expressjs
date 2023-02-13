@@ -209,8 +209,7 @@ app.get("/products", (req, res) => {
       const tempProducts = JSON.parse(data);
       
       // console.log("content==> ", tempProducts[2]);
-      console.log("--------------");
-      console.log("--------");
+      
       res.status(200).json(tempProducts);
     }
   });
@@ -223,7 +222,7 @@ app.get("/products/sum", (req, res) => {
     if (error) {
       res.status(500).send({ message: error });
     } else {
-      console.log("Products husel irsen ...");
+      console.log("Products SUM husel irsen ...");
       const tempProducts = JSON.parse(data);
       const productsCountNumbers = tempProducts.length + 1;
       res
