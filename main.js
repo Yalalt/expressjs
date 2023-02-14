@@ -315,6 +315,53 @@ app.delete("/product/:id", (req, res) => {
   }
 });
 
+app.get("/orders", (req, res) => {
+  console.log("GET Orders request irlee");
+
+  fs.readFile("./data/orders.json", (error, data) => {
+    if (error) {
+      res.status(500).send({ message: error });
+    } else {
+      console.log("Orders husel irsen ****0_0*****");
+      const tempOrders = JSON.parse(data);
+      
+      res.status(200).json(tempOrders);
+    }
+  });
+});
+
+app.post("/order/", (req, res) => {
+  console.log("Orders add huselt irlee... ");
+  console.log("Order ---> ", req.body);
+
+  fs.readFile("./data/orders.json", (err, data) => {
+    const tempOrders = JSON.parse(data);
+    if (err) {
+      res.json({ status: "505", message: "File reading error uuslee..." });
+    } else {
+      console.log("Request body===> ", req.body);
+      const newOrder = req.body;
+      tempOrders.push(newOrder);
+
+      fs.writeFile("./data/orders.json", JSON.stringify(tempOrders), (error) => {
+        if (error) {
+          res.json({
+            status: "505",
+            message: "Error when write to file add user",
+          });
+        } else {
+          res.status(200).json({
+            status: "200",
+            message: "Amjilttai order add hiilee",
+            userData: tempOrders,
+          });
+        }
+      });
+    }
+  });
+});
+
+
 // 404 page
 app.use((req, res) => {
   res.status(404).sendFile("./views/404.html", { root: __dirname });
