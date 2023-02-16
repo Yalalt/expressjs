@@ -361,6 +361,14 @@ app.post("/order/", (req, res) => {
   });
 });
 
+app.post("/weather", (req, res) => {
+  
+  console.log("Request irsen", req.body);
+  const city = req.body.city;
+
+  console.log("City name ", city);
+
+});
 
 // 404 page
 app.use((req, res) => {
